@@ -40,7 +40,7 @@ class MessageController extends Controller
     }
 
     public function get(){
-      $messages = DB::select('select * from messages where date >= DATE_ADD(CURDATE(), INTERVAL -3 HOUR)');
+      $messages = DB::select('select * from messages where date >= date_sub(NOW(), interval 3 hour)');
       return view('mess', ['messages' => $messages]);
     }
 
